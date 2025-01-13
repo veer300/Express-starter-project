@@ -1,17 +1,11 @@
-const express=require('express');
+const express = require("express");
 
-const ServerConfig=require('./config/serverConfig')
+const ServerConfig = require("./config/serverConfig");
+const connectDB = require("./config/dbConfig");
 
+const app = express();
 
-
-const app=express();
-
-
-
-
-app.listen(ServerConfig.PORT,()=>{
-    console.log(`Searver  started at port ${ServerConfig.PORT} `);
-
-    
-    
-})
+app.listen(ServerConfig.PORT, async () => {
+  await connectDB();
+  console.log(`Searver  started at port ${ServerConfig.PORT} `);
+});
